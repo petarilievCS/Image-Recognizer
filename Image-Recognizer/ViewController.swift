@@ -18,7 +18,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        imagePicker.sourceType = .camera
+        imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = false
     }
 
@@ -47,10 +47,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         let request = VNCoreMLRequest(model: model) { request, error in
-            guard let results = request.results else {
+            guard let results = request.results as? [VNClassificationObservation] else {
                 fatalError("Error while accessing results")
             }
-            print(results)
+            if let firstResult = results.first {
+                self.navigationItem.title = firstResult.identifier
+            }
         }
         
         let handler = VNImageRequestHandler(ciImage: image)

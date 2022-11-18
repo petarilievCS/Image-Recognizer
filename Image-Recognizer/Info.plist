@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Library access is needed in order to select image</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Camera access is needed in order to capture image</string>
 	<key>UIApplicationSceneManifest</key>
